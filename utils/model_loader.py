@@ -8,7 +8,11 @@ from langchain_openai import ChatOpenAI
 
 class ConfigLoader:
     def __init__(self):
-        pass
+        print(f"Loaded config.....")
+        self.config = load_config()
+    
+    def __getitem__(self, key):
+        return self.config[key]
     
 class ModelLoader(BaseModel):
     model_provider: Literal["groq", "openai"] = "groq"
